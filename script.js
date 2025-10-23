@@ -1,14 +1,18 @@
 let left = document.querySelector(".left");
 let right = document.querySelector(".right");
 let silder = document.querySelector(".slider");
+let images = document.querySelectorAll(".image");
 
 
 
-let idx = 1;
+let sliderNum = 1;
 right.addEventListener("click", () => {
-    silder.style.transform = `translateX(-${idx + 800}px)`;
-    idx++;
+        if (sliderNum < images.length) {
+                silder.style.transform = `translateX(-${sliderNum * 800}px)`;
+                sliderNum++;
+        } else {
+                silder.style.transform = `translateX(0px)`;
+                sliderNum = 1;
+        }
 })
-// right.addEventListener("click",() =>{
-//     frame.style.transform =`translate(800px)`;
-// })
+
