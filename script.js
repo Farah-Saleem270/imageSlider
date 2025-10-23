@@ -21,3 +21,17 @@ right.addEventListener("click", () => {
         sliderNum < length ?  nextSlide() : secSlide();
 })
 
+
+const prevSlide = () => {
+        silder.style.transform = `translateX(-${(sliderNum-2)*800}px)`;
+        sliderNum--;
+}
+
+const lastSlide = () => {
+        silder.style.transform = `translateX(-${(length-1)*800}px)`;
+        sliderNum = length;
+}
+
+left.addEventListener("click", () => {
+        sliderNum > 1 ?  prevSlide() : lastSlide();
+})
