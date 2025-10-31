@@ -35,3 +35,6 @@ const lastSlide = () => {
 left.addEventListener("click", () => {
         sliderNum > 1 ?  prevSlide() : lastSlide();
 })
+
+
+
