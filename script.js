@@ -20,6 +20,7 @@ const secSlide = () => {
 right.addEventListener("click", () => {
         sliderNum < length ? nextSlide() : secSlide();
         changeColor();
+        
 })
 
 
@@ -36,23 +37,23 @@ const lastSlide = () => {
 left.addEventListener("click", () => {
         sliderNum > 1 ? prevSlide() : lastSlide();
         changeColor();
+        
 })
 
 
 
 //start for dots
 
-
 const buttom = document.querySelector(".buttom");
 
-for (let i = 0; i < length; i++) {
+for(let i=0; i< length; i++){
         const div = document.createElement("div");
         div.className = "button";
         buttom.appendChild(div);
 }
 
-
 const buttons = document.querySelectorAll(".button");
+
 
 buttons[0].style.backgroundColor = "white";
 
@@ -64,13 +65,11 @@ const resetbg = () => {
 
 buttons.forEach((button, i) => {
         button.addEventListener("click", () => {
-          silder.style.transform = `translateX(-${i*800}px)`;
-          resetbg();
-          button.style.backgroundColor = "white";
-
+                silder.style.transform = `translateX(-${i*800}px)`;
+                resetbg();
+                button.style.backgroundColor = "white";
         })
 })
-
 
 
 const changeColor = () => {
