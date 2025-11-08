@@ -20,7 +20,7 @@ const secSlide = () => {
 right.addEventListener("click", () => {
         sliderNum < length ? nextSlide() : secSlide();
         changeColor();
-        
+
 })
 
 
@@ -37,7 +37,7 @@ const lastSlide = () => {
 left.addEventListener("click", () => {
         sliderNum > 1 ? prevSlide() : lastSlide();
         changeColor();
-        
+
 })
 
 
@@ -46,7 +46,7 @@ left.addEventListener("click", () => {
 
 const buttom = document.querySelector(".buttom");
 
-for(let i=0; i< length; i++){
+for (let i = 0; i < length; i++) {
         const div = document.createElement("div");
         div.className = "button";
         buttom.appendChild(div);
@@ -60,12 +60,14 @@ buttons[0].style.backgroundColor = "white";
 const resetbg = () => {
         buttons.forEach((button) => {
                 button.style.backgroundColor = "transparent";
+                button.addEventListener("mouseover", stopSliderShow);
+                button.addEventListener("mouseout", startSlideShow);
         })
 }
 
 buttons.forEach((button, i) => {
         button.addEventListener("click", () => {
-                silder.style.transform = `translateX(-${i*800}px)`;
+                silder.style.transform = `translateX(-${i * 800}px)`;
                 resetbg();
                 button.style.backgroundColor = "white";
         })
@@ -74,7 +76,32 @@ buttons.forEach((button, i) => {
 
 const changeColor = () => {
         resetbg();
-        buttons[sliderNum-1].style.backgroundColor = "white";
+        buttons[sliderNum - 1].style.backgroundColor = "white";
 }
 
 //end dots
+
+
+//Start Auto Slider
+
+let sliderInterval;
+
+const startSlideShow = () => {
+        sliderInterval = setInterval(() => {
+                sliderNum < length ? nextSlide() : secSlide();
+                changeColor();
+        }, 2000)
+}
+
+startSlideShow();
+
+const stopSliderShow = () => {
+        clearInterval(sliderInterval);
+}
+
+silder.addEventListener("mouseover", stopSliderShow);
+silder.addEventListener("mouseout", startSlideShow);
+right.addEventListener("mouseover", stopSliderShow);
+right.addEventListener("mouseout", startSlideShow);
+left.addEventListener("mouseover", stopSliderShow);
+left.addEventListener("mouseout", startSlideShow);
